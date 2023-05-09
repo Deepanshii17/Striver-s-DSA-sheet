@@ -25,3 +25,28 @@ public:
         return (root==NULL || isSymmetricHelp(root->left, root->right));
     }
 };
+
+// Explanation of the above code
+
+Intuition:-
+
+1. The left subtree should be the mirror image of right subtree.
+2. Hence, we will traverse the left subtree as (ROOT-LEFT-RIGHT) and the right subtree as (ROOT-RIGHT-LEFT).
+3. Recursion should be used.
+
+Approach:-
+
+1. Begin with the left node of the root and right node of the root. // bool isSymmetricHelp(root->left, root->right
+2. If any one of the node points to NULL and other node does not point to NULL. Then return false. // if(left==NULL || right == NULL) return left == right;
+3. If both nodes does not point to NULL and points to some value instead, then check if both points to same value and return true else return false. // if(left->val != right->val) return false;
+   return a recursive function checking if (left->left == right->right) as well as (left->right == right->left). If any one of the above condition is false then false is returned otherwise true is returned. // return (isSymmetricHelp(left->left, right->right) && isSymmetricHelp(left->right, right->left));
+4. If root is NULL then return true else return false. // bool isSymmetric (TreeNode* root){ return (root==NULL || is SymmetricHelp(root->left, root->right));}
+
+Complexity:-
+
+Time complexity:
+O(N), where N = No. of nodes in the Binary Tree as we are visiting each node only once.
+
+Space complexity:
+O(N), where N = no. of nodes in the binary tree.
+It is equal to the maximum height of the Binary Tree, which will be equal to N in case of skewed tree.
